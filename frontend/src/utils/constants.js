@@ -1,0 +1,30 @@
+export const ROUTES = {
+  home: '/',
+  login: '/login',
+  register: '/register',
+  join: '/join',
+  unauthorized: '/unauthorized',
+  notFound: '*',
+  admin: '/admin',
+  createQuiz: '/admin/create',
+  editQuiz: '/admin/edit/:id',
+  upload: '/admin/upload',
+  deploy: '/admin/deploy',
+  participants: '/admin/participants',
+  results: '/admin/results',
+  settings: '/admin/settings',
+  instructions: '/quiz/instructions',
+  attempt: '/quiz/attempt',
+  submitted: '/quiz/submitted',
+  profile: '/profile',
+};
+
+export const DEFAULT_QUIZ = {
+  title: '',
+  description: '',
+  duration: 15,
+  shuffleQuestions: true,
+  shuffleOptions: true,
+  fullscreenRequired: true,
+  autoSubmit: false,
+};

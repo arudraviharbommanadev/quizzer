@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+PyMySQL
+python-jose
+passlib[bcrypt]
+python-multipart
+pydantic
+openpyxl
+python-docx
+pdfplumber

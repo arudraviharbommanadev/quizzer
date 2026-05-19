@@ -1,0 +1,4 @@
+ROLE_ADMIN = 'admin'
+ROLE_PARTICIPANT = 'participant'
+ATTEMPT_STATUS_IN_PROGRESS = 'in_progress'
+ATTEMPT_STATUS_SUBMITTED = 'submitted'
