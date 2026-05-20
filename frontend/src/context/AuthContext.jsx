@@ -18,27 +18,24 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const response = await authService.login(credentials);
-    const { token, user: profile } = response?.data || {};
+    const { access_token: token, refresh_token: refreshToken, user: profile } = response?.data || {};
     if (token && profile) {
       setItem('quizzer_token', token);
+      setItem('quizzer_refresh_token', refreshToken);
       setItem('quizzer_user', JSON.stringify(profile));
       setUser(profile);
     }
     return response;
   };
 
-  const register = async (payload) => {
-    const response = await authService.register(payload);
-    return response;
-  };
-
   const logout = () => {
     removeItem('quizzer_token');
+    removeItem('quizzer_refresh_token');
     removeItem('quizzer_user');
     setUser(null);
   };
 
-  const value = useMemo(() => ({ user, login, register, logout, loading }), [user, loading]);
+  const value = useMemo(() => ({ user, login, logout, loading }), [user, loading]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

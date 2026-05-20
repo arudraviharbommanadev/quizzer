@@ -2,12 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from '../components/common/ProtectedRoute.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/auth/Login.jsx';
-import Register from '../pages/auth/Register.jsx';
 import JoinQuiz from '../pages/participant/JoinQuiz.jsx';
 import QuizInstructionsPage from '../pages/participant/QuizInstructionsPage.jsx';
 import AttemptQuiz from '../pages/participant/AttemptQuiz.jsx';
 import QuizSubmitted from '../pages/participant/QuizSubmitted.jsx';
-import ParticipantProfile from '../pages/participant/ParticipantProfile.jsx';
 import AdminDashboard from '../pages/admin/AdminDashboard.jsx';
 import CreateQuiz from '../pages/admin/CreateQuiz.jsx';
 import EditQuiz from '../pages/admin/EditQuiz.jsx';
@@ -24,20 +22,18 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
       <Route path="/join" element={<JoinQuiz />} />
       <Route path="/quiz/instructions" element={<QuizInstructionsPage />} />
       <Route path="/quiz/attempt" element={<AttemptQuiz />} />
       <Route path="/quiz/submitted" element={<QuizSubmitted />} />
-      <Route path="/profile" element={<ProtectedRoute><ParticipantProfile /></ProtectedRoute>} />
-      <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-      <Route path="/admin/create" element={<ProtectedRoute><CreateQuiz /></ProtectedRoute>} />
-      <Route path="/admin/edit/:id" element={<ProtectedRoute><EditQuiz /></ProtectedRoute>} />
-      <Route path="/admin/upload" element={<ProtectedRoute><UploadQuestions /></ProtectedRoute>} />
-      <Route path="/admin/deploy" element={<ProtectedRoute><DeployQuizPage /></ProtectedRoute>} />
-      <Route path="/admin/participants" element={<ProtectedRoute><QuizParticipants /></ProtectedRoute>} />
-      <Route path="/admin/results" element={<ProtectedRoute><QuizResults /></ProtectedRoute>} />
-      <Route path="/admin/settings" element={<ProtectedRoute><AdminSettings /></ProtectedRoute>} />
+      <Route path="/admin" element={<ProtectedRoute requireRole="admin"><AdminDashboard /></ProtectedRoute>} />
+      <Route path="/admin/create" element={<ProtectedRoute requireRole="admin"><CreateQuiz /></ProtectedRoute>} />
+      <Route path="/admin/edit/:id" element={<ProtectedRoute requireRole="admin"><EditQuiz /></ProtectedRoute>} />
+      <Route path="/admin/upload" element={<ProtectedRoute requireRole="admin"><UploadQuestions /></ProtectedRoute>} />
+      <Route path="/admin/deploy" element={<ProtectedRoute requireRole="admin"><DeployQuizPage /></ProtectedRoute>} />
+      <Route path="/admin/participants" element={<ProtectedRoute requireRole="admin"><QuizParticipants /></ProtectedRoute>} />
+      <Route path="/admin/results" element={<ProtectedRoute requireRole="admin"><QuizResults /></ProtectedRoute>} />
+      <Route path="/admin/settings" element={<ProtectedRoute requireRole="admin"><AdminSettings /></ProtectedRoute>} />
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
